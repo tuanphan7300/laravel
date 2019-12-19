@@ -9,6 +9,7 @@
                     <hr>
                 </div>
                 <form method="POST">
+                    @csrf
                     <div class="form-group">
                         <label class="control-label">Họ Và Tên</label>
                         <input name="full" type="text" class="form-control underlined" value="Nguyễn Thế Phúc"> </div>

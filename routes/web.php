@@ -34,3 +34,6 @@ use App\Http\Controllers\UserController;
 Route::get('user','UserController@getUser');
 Route::get('user/add','UserController@getAddUser');
 Route::get('user/edit','UserController@getEditUser');
+Route::get('welcome', 'UserController@getWelcome');
+Route::post('user/add', 'UserController@postAddUser');
+Route::post('user/edit', 'UserController@postEditUser');
