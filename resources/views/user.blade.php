@@ -4,6 +4,11 @@
 <article class="content dashboard-page">
 
     <section class="section">
+        @if(session('thongbao'))
+        <div class="alert alert-success" role="alert">
+        <strong>{{session('thongbao')}}</strong>
+        </div>
+        @endif
         <div class="row sameheight-container">
             <div class="col-xl-12">
                 <div class="card sameheight-item items" data-exclude="xs,sm,lg">
@@ -11,7 +16,7 @@
                         <div class="card-header bordered">
                             <div class="header-block">
                                 <h3 class="title"> Danh sách thành viên </h3>
-                                <a href="add_user.html" class="btn btn-primary btn-sm"> Thêm </a>
+                                <a href="/user/add" class="btn btn-primary btn-sm"> Thêm </a>
                             </div>
                             <div class="header-block pull-right">
                                 <label class="search">
@@ -55,70 +60,29 @@
                                 </div>
                             </div>
                         </li>
+                        @foreach ($users as $row)
                         <li class="item">
                             <div class="item-row">
                                 <div class="item-col">
                                     <a href="edit_user.html">
-                                        Nguyễn Thế phúc
+                                        {{$row->full}}
                                     </a>
                                 </div>
                                 <div class="item-col">
-                                    0356333333
+                                    {{$row->phone}}
                                 </div>
                                 <div class="item-col">
-                                    <span title="Dũng Tiến-Thường tín-Hà Nội">Dũng Tiến-Thường tín...</span>
+                                <span title="Dũng Tiến-Thường tín-Hà Nội">{{$row->address}}</span>
                                 </div>
                                 <div class="item-col">
-                                    017478331
+                                    {{$row->id_number}}
                                 </div>
                                 <div class="item-col ">
                                     <a href="#" class="btn btn-danger-outline">Xoá</a>
                                 </div>
                             </div>
                         </li>
-                        <li class="item">
-                            <div class="item-row">
-                                <div class="item-col">
-                                    <a  href="edit_user.html">
-                                        Nguyễn đình trung
-                                    </a>
-                                </div>
-                                <div class="item-col">
-                                    0321555422
-                                </div>
-                                <div class="item-col">
-                                    <span title="Quán Gánh-Thường tín-Hà Nội">Quán Gánh-Thường tín...</span>
-                                </div>
-                                <div class="item-col">
-                                    017653224
-                                </div>
-                                <div class="item-col ">
-                                        <a href="#" class="btn btn-danger-outline">Xoá</a>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="item">
-                            <div class="item-row">
-                                <div class="item-col">
-                                    <a  href="edit_user.html">
-                                        Nguyễn Văn Ninh
-                                    </a>
-                                </div>
-                                <div class="item-col">
-                                    0152354421
-                                </div>
-                                <div class="item-col">
-                                    <span title="Dũng Tiến-Thường tín-Hà Nội">Từ sơn-Bắc ninh - Hà
-                                        N...</span>
-                                </div>
-                                <div class="item-col">
-                                    017658847
-                                </div>
-                                <div class="item-col ">
-                                    <a href="#" class="btn btn-danger-outline">Xoá</a>
-                                </div>
-                            </div>
-                        </li>
+                        @endforeach
 
                     </ul>
 
@@ -131,11 +95,8 @@
         <div align='right'>
             <nav aria-label="Page navigation example">
                 <ul class="pagination">
-                    <li class="page-item"><a class="page-link" href="#"><</a></li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">></a></li>
+                    {{-- dùng để hiện thị số trang --}}
+                    {{$users->links()}}
                 </ul>
             </nav>
         </div>
