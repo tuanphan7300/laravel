@@ -12,7 +12,7 @@
         <div class="row sameheight-container">
             <div class="col-xl-12">
                 <div class="card sameheight-item items" data-exclude="xs,sm,lg">
-                    <form action="" method="post">
+                    <form action="search" method="get">
                         <div class="card-header bordered">
                             <div class="header-block">
                                 <h3 class="title"> Danh sách thành viên </h3>
@@ -60,11 +60,11 @@
                                 </div>
                             </div>
                         </li>
-                        @foreach ($users as $row)
+                        @foreach ($Users as $row)
                         <li class="item">
                             <div class="item-row">
                                 <div class="item-col">
-                                    <a href="edit_user.html">
+                                    <a href="user/edit/{{$row->id}}">
                                         {{$row->full}}
                                     </a>
                                 </div>
@@ -78,7 +78,7 @@
                                     {{$row->id_number}}
                                 </div>
                                 <div class="item-col ">
-                                    <a href="#" class="btn btn-danger-outline">Xoá</a>
+                                    <a onclick="return del()" href="user/del/{{$row->id}}" class="btn btn-danger-outline">Xoá</a>
                                 </div>
                             </div>
                         </li>
@@ -96,7 +96,7 @@
             <nav aria-label="Page navigation example">
                 <ul class="pagination">
                     {{-- dùng để hiện thị số trang --}}
-                    {{$users->links()}}
+                    {{$Users->links()}}
                 </ul>
             </nav>
         </div>
@@ -104,4 +104,9 @@
     </section>
 
 </article>
+<script>
+    function del(){
+        return confirm('Bạn muốn xóa người dùng này không');
+    }
+</script>
 @endsection
